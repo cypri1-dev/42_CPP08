@@ -6,7 +6,7 @@
 /*   By: cyferrei <cyferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 23:34:20 by cyferrei          #+#    #+#             */
-/*   Updated: 2024/12/22 23:47:37 by cyferrei         ###   ########.fr       */
+/*   Updated: 2024/12/23 17:03:07 by cyferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 #include <vector>
 #include <exception>
+#include <algorithm>
+#include <iostream>
+#include <climits>
 
 class Span {
 	private:
@@ -28,17 +31,20 @@ class Span {
 		~Span();
 
 		void addNumber(int nb);
-		
-		template<typename T>
-		typename T::iterator shortestSpan(T &container);
-
-		template<typename T>
-		typename T::iterator longestSpan(T &container);
+		unsigned int longestSpan();
+		unsigned int shortestSpan();
 
 		class NotEnoughtSpace : public std::exception {
 			public:
 				const char* what()const throw() {
 					return "No more space in tab!";
+				}
+		};
+
+		class NotEnoughtElement : public std::exception {
+			public:
+				const char* what()const throw() {
+					return "Not enought element in tab!";
 				}
 		};
 };
