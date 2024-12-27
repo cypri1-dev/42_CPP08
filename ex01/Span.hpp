@@ -6,7 +6,7 @@
 /*   By: cyferrei <cyferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 23:34:20 by cyferrei          #+#    #+#             */
-/*   Updated: 2024/12/23 17:03:07 by cyferrei         ###   ########.fr       */
+/*   Updated: 2024/12/27 13:05:28 by cyferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ class Span {
 		~Span();
 
 		void addNumber(int nb);
+		void addNumbers(std::vector<int>::iterator begin, std::vector<int>::iterator end);
 		unsigned int longestSpan();
 		unsigned int shortestSpan();
 
@@ -45,6 +46,13 @@ class Span {
 			public:
 				const char* what()const throw() {
 					return "Not enought element in tab!";
+				}
+		};
+
+		class OverflowException : public std::exception {
+			public:
+				const char* what()const throw() {
+					return "Overflow detected!";
 				}
 		};
 };
